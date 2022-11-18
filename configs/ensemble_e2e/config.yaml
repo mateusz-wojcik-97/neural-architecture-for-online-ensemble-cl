@@ -1,0 +1,42 @@
+general: &default
+  num_classifiers: 20
+  n_neighbors: 4
+  ensemble_learning_rate: 0.0001
+  ensemble_weight_decay: 0.0001
+  tanh_factor: 250.0
+  trainable_keys: False
+  device: cpu
+  train_epochs: 1
+  return_task_id: False
+  batch_size: 60
+  shuffle: True
+
+  augment_data: False
+  num_generated_batches: 1
+  num_generated_examples: 20
+
+mnist:
+  <<: *default
+  num_experiences: 10
+  num_classes: 10
+  sample_size: 512
+  encoder: omniglot
+  fixed_class_order: ~
+
+cifar10:
+  <<: *default
+  num_experiences: 10
+  num_classes: 10
+  sample_size: 2048
+  encoder: byol
+  batch_size: 32
+  fixed_class_order: ~
+
+cifar100:
+  <<: *default
+  num_experiences: 10
+  num_classes: 100
+  sample_size: 2048
+  encoder: byol
+  batch_size: 32
+  fixed_class_order: ~
